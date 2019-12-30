@@ -12,7 +12,7 @@
     "devDependencies": {
         "cross-env": "^5.1",
         "laravel-mix": "^2.0",
-        "lodash": "^4.17.5"
+        "lodash": "^4.17.13"
     },
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^11.1.1",
