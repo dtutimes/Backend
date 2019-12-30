@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8">
                 <article> 
-                    <div class="article__title">
+                    <div class="article__title"> 
                         <h1 class="h2">{{ $story->title }}</h1>
                         Created By 
                         <strong>
@@ -19,6 +19,12 @@
                                 @else badge-dark @endif">
                             {{ $story->status }}
                         </span>
+                    </div>
+
+                    <div class="text-center">
+                        @if ($story->getFirstMediaUrl('blog_images', 'fullscreen'))
+                             <img alt="background" src="{{ $story->getFirstMediaUrl('blog_images', 'fullscreen') }}" />
+                        @endif
                     </div>
 
                     <div class="article__body">
