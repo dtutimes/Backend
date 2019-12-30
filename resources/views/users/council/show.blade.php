@@ -31,10 +31,6 @@
                         <p class="small">
                             <small>{{ $story->biliner }}</small>
                         </p>
-
-                        <div>
-                            <img src="{{ $story->getFirstMediaUrl('blog_images', 'fullscreen') }}" alt="">
-                        </div>
                         <p>
                             {!! $story->body !!}
                         </p>
