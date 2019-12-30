@@ -11,7 +11,7 @@
                     @csrf
 
                         <div class="col-md-12 text-center">
-                            <img src="{{ asset('img/logo-white.png') }}">
+                            <img src="{{ asset('logo-white.png') }}">
                         </div>
                         <div class="col-md-12 text-center">
                             <h3>DTU TIMES</h3>
