@@ -139,7 +139,7 @@ class CouncilController extends Controller
 
       event(new StoryPublished($story));
 
-      return redirect()->route('blog.show', $story->slug);
+      return redirect()->route('council.stories.show', $story->uuid);
     }
 
     public function societyIndex()
