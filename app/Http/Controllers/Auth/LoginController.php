@@ -28,9 +28,7 @@ class LoginController extends Controller
      */
     protected function redirectTo()
     {
-        if(Auth::user()->hasRole('superuser')) return '/manage'; 
-        elseif(Auth::user()->hasRole('council')) return '/council';
-        else return '/dashboard';  
+        return '/dashboard';  
     }
 
     /**

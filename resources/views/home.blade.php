@@ -3,143 +3,154 @@
 
 @section('content')
 @if (!auth()->user()->hasRole('society_head'))
-<section class="cover height-100 imagebg" data-gradient-bg="#3590F3,#62BFED,#8FB8ED,#C2BBF0,#C9B8DF">
+
+<section class="cover height-50 imagebg" data-gradient-bg="#3590F3,#62BFED,#8FB8ED,#C2BBF0,#C9B8DF">
 
     <div class="container pos-vertical-center">
-        <div class="row justify-content-center" >
-            <div class="col-md-4 col-lg-4 text-center" >
-
-              <h1 style="font-family: 'Rajdhani', sans-serif; color:white; font-size:8rem;"> डैशबोर्ड </h1>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+            <h1 style="font-family: 'Rajdhani', sans-serif; color:white; margin-bottom:0; font-size:8rem;"> डैशबोर्ड </h1>
+            <h3 style="font-family: 'Rajdhani', sans-serif; color:white; margin-top: -2rem; font-size:3rem;"> डीटीयू टाइम्स</h3>     
             </div>
         </div>
-     </div>
+    </div>
 </section>
+<section class="cover hidden-xs">
+    <div class="containe ">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+            <canvas height="100" id="storyChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endif
 
 @if (!auth()->user()->hasRole('photographer') && !auth()->user()->hasRole('society_head'))
-    <section style="">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-4 mb-3">
-                    @php
-                        $published = auth()->user()->story()->whereStatus('published')->latest()->first();
-                        $pending = auth()->user()->story()->whereStatus('pending')->latest()->first();
 
-                    @endphp
-                    <small>Latest published: {{ $published ? $published->title : 'No story published yet'  }}</small> <br>
-                    <small>Last story submitted for approval: {{ $pending ? $pending->title : 'No story submitted for approval yet' }}</small>
-                </div>
-                <div class="col-md-6">
-                    <canvas id="myChart"></canvas>
-                </div>
+<section class="">
+    <div class="container" style="padding-top: 3rem;">
+        <div class="row justify-content-center">
+            <div class="col-md-3 mb-3">
+                @php
+                $published = auth()->user()->story()->whereStatus('published')->latest()->first();
+                $pending = auth()->user()->story()->whereStatus('pending')->latest()->first();
+
+                @endphp
+                <small>Latest published: {{ $published ? $published->title : 'No story published yet'  }}</small> <br>
+                <small>Last story submitted for approval: {{ $pending ? $pending->title : 'No story submitted for approval yet' }}</small>
+            </div>
+            <div class="col-md-6">
+                <canvas id="myChart"></canvas>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 @endif
 
 @if (!auth()->user()->hasRole('society_head'))
-    <section class="{{ auth()->user()->hasRole('photographer') ? 'pt-5' : 'pt-0' }}">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-10">
-                    <h3>To-do list</h3>
-                    <ol class="process-3">
-                        @foreach ($todos as $item)
-                        <li class="process_item">
-                            <div class="process__number">
-                                <span>{{ $item->id }}</span>
-                            </div>
-                            <div class="process__body">
-                                <h4 class="m-0">
-                                    {{ $item->name }}
-                                </h4>
-                                <p class="m-0">
-                                    {{ $item->description }}
-                                </p>
-                                <p>
-                                    <small>Created by {{ \App\User::find($item->user_id) ? \App\User::find($item->user_id)->name : 'Not found' }},</small>
-                                    @if ($item->completed_by)
-                                        <small>
-                                            Completed by {{ \App\User::find($item->completed_by) ? \App\User::find($item->completed_by)->name : 'The User has been deleted or Not found' }}, {{ \Carbon\Carbon::parse($item->completed_at)->diffForHumans() }}
-                                        </small>
-                                    @else
-                                        <small>
-                                            <a href="{{ route('todos.done', $item->id) }}">Mark as Done</a>
-                                        </small>
-                                    @endif
-                                    <small>
-                                        <a class="text-danger" href="{{ route('dashboard') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">Remove</a>
-                                    </small>
-                                </p>
-                            </div>
-                        </li>
-                        <form id="delete-form" action="{{ route('todos.destroy', $item->id) }}" method="POST" style="display: none;">
-                            @csrf @method('DELETE')
-                        </form>
-                        @endforeach
-                    </ol>
-
-                    <div class="mt-5">
-                        <form action="{{ route('todos.store') }}" method="post" class="row">
-                            @csrf
-                            <div class="col-md-6">
-                                <input type="text" name="name" class="class-validate" placeholder="New task" required>
-                            </div>
-
-                            <div class="col-md-6">
-                                @if (auth()->user()->hasRole('council') || auth()->user()->hasRole('superuser') || auth()->user()->hasRole('coordinator'))
-                                    <small class="mr-3">Visibile to: </small>
-                                    <br class="hidden-lg">
-                                    <div class="input-radio input-radio--innerlabel">
-                                        <input id="all" type="radio" name="for" value="all" />
-                                        <label for="all">ALL</label>
-                                    </div>
-                                    <div class="input-radio input-radio--innerlabel">
-                                        <input id="columnist" type="radio" name="for" value="columnist" />
-                                        <label for="columnist">Columnists</label>
-                                    </div>
-                                    <div class="input-radio input-radio--innerlabel">
-                                        <input id="photographer" type="radio" name="for" value="photographer" />
-                                        <label for="photographer">Photographers</label>
-                                    </div>
-                                @elseif (auth()->user()->hasRole('columnist'))
-                                    <input type="hidden" name="for" value="columnist">
-                                @elseif (auth()->user()->hasRole('photographer'))
-                                    <input type="hidden" name="for" value="photographer">
+<section class="{{ auth()->user()->hasRole('photographer') ? 'pt-5' : 'pt-0' }}">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-10">
+                <h3>To-do list</h3>
+                <ol class="process-3">
+                    @foreach ($todos as $item)
+                    <li class="process_item">
+                        <div class="process__number">
+                            <span>{{ $item->id }}</span>
+                        </div>
+                        <div class="process__body">
+                            <h4 class="m-0">
+                                {{ $item->name }}
+                            </h4>
+                            <p class="m-0">
+                                {{ $item->description }}
+                            </p>
+                            <p>
+                                <small>Created by {{ \App\User::find($item->user_id) ? \App\User::find($item->user_id)->name : 'Not found' }},</small>
+                                @if ($item->completed_by)
+                                <small>
+                                    Completed by {{ \App\User::find($item->completed_by) ? \App\User::find($item->completed_by)->name : 'The User has been deleted or Not found' }}, {{ \Carbon\Carbon::parse($item->completed_at)->diffForHumans() }}
+                                </small>
+                                @else
+                                <small>
+                                    <a href="{{ route('todos.done', $item->id) }}">Mark as Done</a>
+                                </small>
                                 @endif
+                                <small>
+                                    <a class="text-danger" href="{{ route('dashboard') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">Remove</a>
+                                </small>
+                            </p>
+                        </div>
+                    </li>
+                    <form id="delete-form" action="{{ route('todos.destroy', $item->id) }}" method="POST" style="display: none;">
+                        @csrf @method('DELETE')
+                    </form>
+                    @endforeach
+                </ol>
 
-                            </div>
+                <div class="mt-5">
+                    <form action="{{ route('todos.store') }}" method="post" class="row">
+                        @csrf
+                        <div class="col-md-6">
+                            <input type="text" name="name" class="class-validate" placeholder="New task" required>
+                        </div>
 
-                            <div class="col-md-6">
-                                <textarea name="description" id="" cols="30" rows="3" placeholder="Description"></textarea>
+                        <div class="col-md-6">
+                            @if (auth()->user()->hasRole('council') || auth()->user()->hasRole('superuser') || auth()->user()->hasRole('coordinator'))
+                            <small class="mr-3">Visibile to: </small>
+                            <br class="hidden-lg">
+                            <div class="input-radio input-radio--innerlabel">
+                                <input id="all" type="radio" name="for" value="all" />
+                                <label for="all">ALL</label>
                             </div>
+                            <div class="input-radio input-radio--innerlabel">
+                                <input id="columnist" type="radio" name="for" value="columnist" />
+                                <label for="columnist">Columnists</label>
+                            </div>
+                            <div class="input-radio input-radio--innerlabel">
+                                <input id="photographer" type="radio" name="for" value="photographer" />
+                                <label for="photographer">Photographers</label>
+                            </div>
+                            @elseif (auth()->user()->hasRole('columnist'))
+                            <input type="hidden" name="for" value="columnist">
+                            @elseif (auth()->user()->hasRole('photographer'))
+                            <input type="hidden" name="for" value="photographer">
+                            @endif
 
-                            <div class="col-md-4">
-                                <input type="submit" value="Add To List" class="btn btn--sm type--uppercase">
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <textarea name="description" id="" cols="30" rows="3" placeholder="Description"></textarea>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="submit" value="Add To List" class="btn btn--sm type--uppercase">
+                        </div>
+                    </form>
                 </div>
             </div>
-            <!--end of row-->
         </div>
-        <!--end of container-->
-    </section>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
 @endif
 
 @if (auth()->user()->hasRole('society_head'))
-    @include('users.society_head.dashboard')
+@include('users.society_head.dashboard')
 @endif
 
 @endsection
 
 @php
-    $total = auth()->user()->story()->get()->count();
-    $pending = auth()->user()->story()->whereStatus('pending')->get()->count();
-    $published = auth()->user()->story()->whereStatus('published')->get()->count();
-    $draft = auth()->user()->story()->whereStatus('draft')->get()->count();
+$totalUser = auth()->user()->story()->get()->count();
+$pendingUser = auth()->user()->story()->whereStatus('pending')->get()->count();
+$publishedUser = auth()->user()->story()->whereStatus('published')->get()->count();
+$draftUser = auth()->user()->story()->whereStatus('draft')->get()->count();
 @endphp
-
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script>
@@ -150,7 +161,7 @@
                 data: {
                     labels: ["Total", "Draft", "Pending", "Published",],
                     datasets: [{
-                        data: [{{ $total }}, {{ $draft }}, {{ $pending }}, {{ $published }}],
+                        data: [{{ $totalUser }}, {{ $draftUser }}, {{ $pendingUser }}, {{ $publishedUser }}],
                         backgroundColor: [
                             'rgba(255,99,132,1)',
                             'rgba(255, 206, 86, 1)',
@@ -168,5 +179,98 @@
                 }
             });
         }
+    </script>
+    <script>
+        var ctx = document.getElementById("storyChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: 'Total',
+                    data: [
+                        {{ $total[1] }},
+                        {{ $total[2] }},
+                        {{ $total[3] }},
+                        {{ $total[4] }},
+                        {{ $total[5] }},
+                        {{ $total[6] }},
+                        {{ $total[7] }},
+                        {{ $total[8] }},
+                        {{ $total[9] }},
+                        {{ $total[10] }},
+                        {{ $total[11] }},
+                        {{ $total[12] }},
+                    ],
+                    borderColor: 'rgba(255,99,132,1)',
+                    borderWidth: 1,
+                    fill: 'flase',
+                },
+                {
+                    label: 'Draft',
+                    data: [
+                        {{ $draft[1] }},
+                        {{ $draft[2] }},
+                        {{ $draft[3] }},
+                        {{ $draft[4] }},
+                        {{ $draft[5] }},
+                        {{ $draft[6] }},
+                        {{ $draft[7] }},
+                        {{ $draft[8] }},
+                        {{ $draft[9] }},
+                        {{ $draft[10] }},
+                        {{ $draft[11] }},
+                        {{ $draft[12] }},
+                    ],
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1,
+                    fill: 'flase',
+                },
+                {
+                    label: 'Pending',
+                    data: [
+                        {{ $pending[1] }},
+                        {{ $pending[2] }},
+                        {{ $pending[3] }},
+                        {{ $pending[4] }},
+                        {{ $pending[5] }},
+                        {{ $pending[6] }},
+                        {{ $pending[7] }},
+                        {{ $pending[8] }},
+                        {{ $pending[9] }},
+                        {{ $pending[10] }},
+                        {{ $pending[11] }},
+                        {{ $pending[12] }},
+                    ],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    fill: 'flase',
+                },
+                {
+                    label: 'Published',
+                    data: [
+                        {{ $published[1] }},
+                        {{ $published[2] }},
+                        {{ $published[3] }},
+                        {{ $published[4] }},
+                        {{ $published[5] }},
+                        {{ $published[6] }},
+                        {{ $published[7] }},
+                        {{ $published[8] }},
+                        {{ $published[9] }},
+                        {{ $published[10] }},
+                        {{ $published[11] }},
+                        {{ $published[12] }},
+                    ],
+                    borderColor: 'rgba(10, 199, 172, 1)',
+                    borderWidth: 1,
+                    fill: 'flase',
+                },
+                ]
+            },
+            options: {
+                reponsive: true,
+            }
+        });
     </script>
 @endsection

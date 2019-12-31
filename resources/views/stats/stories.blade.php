@@ -27,7 +27,7 @@
         </div>
     </section>
 
-@endif
+@endif 
 
 @endsection
 
@@ -126,4 +126,5 @@
             }
         });
     </script>
+    
 @endsection
