@@ -181,8 +181,8 @@ $draftUser = auth()->user()->story()->whereStatus('draft')->get()->count();
         }
     </script>
     <script>
-        var ctx = document.getElementById("storyChart");
-        var myChart = new Chart(ctx, {
+        var ct = document.getElementById("storyChart");
+        var storyChart = new Chart(ct, {
             type: 'line',
             data: {
                 labels: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
