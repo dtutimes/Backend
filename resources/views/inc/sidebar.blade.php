@@ -297,7 +297,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('users.unactive') }}" class="text-white">
-                                        Unactive Members
+                                        INactive Members
                                     </a>
                                 </li>
                             </ul>

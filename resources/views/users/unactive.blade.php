@@ -6,9 +6,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-lg-8">
-                <h1>Unactive Members</h1>
+                <h1>INactive Members</h1>
                 <p>
-                    List of all the unactive members of the DTU Times team.
+                    List of all the Inactive members of the DTU Times team.
                 </p>
             </div>
         </div>
