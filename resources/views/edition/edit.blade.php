@@ -27,6 +27,12 @@
                                 <input type="text" name="link" placeholder="{{$edition->link}}" class="validate-required" value="{{ old('link') ? old('link') : $edition->link }}"
                                     />
                             </div>
+                            
+                             <div class="col-md-12">
+                                <label>AJAX Code</label>
+                                <input type="text" name="ajax" placeholder="{{$edition->ajax}}" class="validate-required" value="{{ old('ajax') ? old('ajax') : $edition->ajax }}"
+                                    />
+                            </div>
 
                             <div class="col-md-12">
                                 <label for="">Cover</label>
