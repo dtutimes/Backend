@@ -15,7 +15,7 @@
                     <a href="{{ $edition->link }}">Go to Edition PDF</a>
                 </p>
                 <p class="">
-                    <a href="{{ route('edition.showajax', $edition->id) }}">See Edition</a>
+                    <a href="{{ $edition->ajax }}">See Edition</a>
                 </p>
 
                 <p></p>
