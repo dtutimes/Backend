@@ -22,6 +22,12 @@
                         <input type="text" name="link" placeholder="Link" class="validate-required" value="{{ old('link') ? old('link') : '' }}"
                             required />
                     </div>
+                    
+                    <div class="col-md-12">
+                        <label>AJAX Code</label>
+                        <input type="text" name="ajax" placeholder="AJAX" class="validate-required" value="{{ old('ajax') ? old('ajax') : '' }}"
+                            required />
+                    </div>
                 
                     <div class="col-md-12">
                         <label for="">Cover</label>

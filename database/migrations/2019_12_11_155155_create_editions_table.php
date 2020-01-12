@@ -17,6 +17,7 @@ class CreateEditionsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->longText('link');
+            $table->longText('ajax');
             $table->softDeletes();
             $table->timestamps();
         });

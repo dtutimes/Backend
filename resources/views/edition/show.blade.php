@@ -12,7 +12,10 @@
                     {{ $edition->name }}
                 </h1>
                 <p class="">
-                    <a href="{{ $edition->link }}">Go to Edition</a>
+                    <a href="{{ $edition->link }}">Go to Edition PDF</a>
+                </p>
+                <p class="">
+                    <a href="{{ route('edition.showajax', $edition->id) }}">See Edition</a>
                 </p>
 
                 <p></p>
