@@ -54,7 +54,7 @@
                                     </span>
                                 </a>
                                 <form id="delete-form--{{$item->id }}" action="{{ route('council.stories.destory', $item->uuid )}}" method="POST">
-                                    @csrf @method('DELETE')
+                                    @csrf
                                 </form>
                             </div>
                         </div>

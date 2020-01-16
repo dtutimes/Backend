@@ -4,7 +4,9 @@
     </IfModule>
 
     RewriteEngine On
-
+    RewriteCond %{HTTP_REFERER} !^https://app\.dtutimes\.com/.*$ [NC]
+    RewriteCond %{HTTP_REFERER} !^https://app\.dtutimes\.com$ [NC]
+    RewriteRule .*\.(wav|swf|jpg|jpeg|gif|png|bmp|js|css)$ - [F,NC,L]
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
