@@ -27,8 +27,6 @@ Route::get('/construction', function () {
 
 
 
-
-
 Route::get('/tracking/societies/referrals/{slug}', 'TrackingController@trackReferrals')->name('track.society.referrals');
 
 // Superuser Routes
@@ -48,6 +46,7 @@ Route::group(['prefix' => 'manage', 'middleware' => ['role:superuser', 'CheckBlo
             Route::put('/{id}', 'EditionController@update')->name('edition.update');
             Route::delete('/{id}', 'EditionController@destroy')->name('edition.destroy');
         });
+    
     
     //Facebook Instagram API Routes
 
