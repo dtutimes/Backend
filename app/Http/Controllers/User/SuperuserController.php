@@ -290,7 +290,11 @@ class SuperuserController extends Controller
     {
       $user = User::whereUuid($uuid)->firstOrFail();
 
-      $user->update(['position' => $request->position]);
+      $user->position = $request->position;
+      $user->save();
+      //$user->update(['position' => $request->position]);
+
+      //return $user;
 
       return redirect()->route('users.show', $user->uuid);
     }
