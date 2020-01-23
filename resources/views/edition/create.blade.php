@@ -28,6 +28,12 @@
                         <input type="text" name="ajax" placeholder="AJAX" class="validate-required" value="{{ old('ajax') ? old('ajax') : '' }}"
                             required />
                     </div>
+
+                    <div class="col-md-12">
+                        <label>Period of Edition</label>
+                        <input type="text" name="period" placeholder="Jan-Mar 2020" class="validate-required" value="{{ old('period') ? old('period') : '' }}"
+                            required />
+                    </div>
                 
                     <div class="col-md-12">
                         <label for="">Cover</label>
