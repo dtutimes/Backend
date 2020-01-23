@@ -27,9 +27,7 @@
                     <div class="accordion__title">
                         <span class="h5">{{$item->name}}
                             <small>
-                                @foreach ($item->roles as $role)
-                                 {{$role->display_name}} 
-                                @endforeach                                
+                              {{$item->position}}                              
                             </small>
                         </span>
                     </div>
@@ -62,5 +60,3 @@
 
 
 @endsection
-
-

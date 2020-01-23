@@ -8,7 +8,7 @@
                     <div class="text-block text-center">
                         <img alt="avatar" src="{{ $user->getFirstMediaUrl('avatars', 'thumb') }}" class="image--md" />
                         <span class="h5">{{ $user->name }}</span>
-                        <span>@foreach ($user->roles as $item) {{$item->name}} @endforeach</span>
+                        <span>{{ $user->position }}</span>
                         <span class="label">
                             <a href="{{ route('users.role.edit', $user->uuid) }}" class="text-white">@foreach ($user->roles as $item) {{$item->name}} @endforeach</a>
                         </span>
