@@ -15,7 +15,7 @@ class Edition extends Model implements HasMedia
     use HasMediaTrait;
 
     protected $fillable = [
-        'name', 'link', 'ajax'
+        'name', 'link', 'ajax' , 'period'
     ];
 
     public function registerMediaConversions(Media $media = null)

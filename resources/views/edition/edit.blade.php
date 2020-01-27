@@ -35,6 +35,12 @@
                             </div>
 
                             <div class="col-md-12">
+                                <label>Period of Edition</label>
+                                <input type="text" name="period" placeholder="{{$edition->period}}" class="validate-required" value="{{ old('period') ? old('period') : $edition->period }}"
+                                    />
+                            </div>
+
+                            <div class="col-md-12">
                                 <label for="">Cover</label>
                                 <input type="file" name="cover" id="">
                             </div>

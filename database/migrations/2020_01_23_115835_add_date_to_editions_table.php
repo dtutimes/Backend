@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEditionsTable extends Migration
+class AddDateToEditionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateEditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('editions', function (Blueprint $table) {
-            $table->increments('id');
-	        $table->string('name');
-            $table->longText('link');
-            $table->longText('ajax');
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('editions', function (Blueprint $table) {
+            $table->longText('period');
         });
     }
 
@@ -30,6 +25,8 @@ class CreateEditionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('editions');
+        Schema::table('editions', function (Blueprint $table) {
+            //
+        });
     }
 }
