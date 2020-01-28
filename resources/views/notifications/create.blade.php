@@ -29,9 +29,11 @@
                     </div>
 
                     <div class="col-md-12">
-                        <label>Link</label>
-                        <input type="text" class="validate-required" name="link" value="{{ old('link') ? old('link') : '' }}"
-                            required>
+                        <label>Category</label>
+                        <select name="category" class="text-dark">
+                            <option value="event">New Event</option>
+                            <option value="blog">New Blog</option>
+                        </select>
                     </div>
                   
                     <div class="col-md-4 ">
