@@ -46,9 +46,13 @@
                                                 {{ $item->description }}
                                             </h4>
                                         </a>
-                                        <p>
-                                            <a href="#">View</a>
-                                        </p>
+                                        <a class="btn btn--sm" href="{{ route('stories.index' )}}" onclick="event.preventDefault();
+                                            document.getElementById('delete-form').submit();">
+                                            <span class="btn__text">Delete</span>
+                                        </a>
+                                        <form id="delete-form" action="{{route('notifications.destroy', $item->id)}}" method="post">
+                                            @csrf @method('DELETE')
+                                        </form>
                                     </div>
                                     <div class="card__bottom">
                                         <ul class="list-inline">
@@ -68,7 +72,7 @@
                                 <div class="boxed boxed--sm">
                                     <div>
                                         <small>created by,</small>
-                                        <h3 class="d-inline">Manish</h3>
+                                        <h3 class="d-inline">{{ $item->user->name }}</h3>
                                     </div>
                                     <small>created {{ $item->created_at->diffForHumans() }}</small> 
                                     <p>

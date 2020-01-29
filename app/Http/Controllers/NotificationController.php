@@ -15,7 +15,7 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $notifications =Notification::latest()->get();
+        $notifications =Notification::latest()->with('user')->get();
         return view('notifications.index', [
             'notifications' => $notifications
         ]);
@@ -41,6 +41,30 @@ class NotificationController extends Controller
     {
         auth()->user()->notification()->create($request->all());
 
+        $beamsClient = new \Pusher\PushNotifications\PushNotifications(array(
+          "instanceId" => env('INSTANCE_ID'),
+          "secretKey" => env('SECRET_KEY'),
+        ));
+
+        $publishResponse = $beamsClient->publishToInterests(
+          array("hello", "donuts"),
+          array(
+            "fcm" => array(
+              "notification" => array(
+                "name" => $request->name,
+                "description" => $request->description,
+                "category" => $request->category
+              )
+            ),
+            "apns" => array("aps" => array(
+              "alert" => array(
+                "name" => $request->name,
+                "description" => $request->description,
+                "category" => $request->category
+              )
+            ))
+        ));
+
         return redirect()->route('notifications.index');
     }
 
@@ -63,7 +87,7 @@ class NotificationController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -86,7 +110,13 @@ class NotificationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $notif = Notification::whereid($id)->firstOrFail();
+        
+        $notif->delete();
+
+        session()->flash('success','Notification Deleted!');
+
+        return redirect()->route('notifications.index');
     }
 
     public function send($id)

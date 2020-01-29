@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87cededfe5a70f1c8372e4d71d59c82e",
+    "content-hash": "bb900f172c763bf42625b98649969371",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2999,6 +2999,42 @@
             "time": "2018-08-13T14:57:32+00:00"
         },
         {
+            "name": "pusher/pusher-push-notifications",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pusher/push-notifications-php.git",
+                "reference": "ffaabe56a181bab0b41019626e571ae7156e9d0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pusher/push-notifications-php/zipball/ffaabe56a181bab0b41019626e571ae7156e9d0a",
+                "reference": "ffaabe56a181bab0b41019626e571ae7156e9d0a",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "^5.0",
+                "guzzlehttp/guzzle": "~6.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "doctrine/instantiator": "1.0.5",
+                "phpunit/phpunit": "~5.7.0",
+                "symfony/yaml": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pusher\\PushNotifications\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2019-02-06T15:30:03+00:00"
+        },
+        {
             "name": "ralouphie/getallheaders",
             "version": "2.0.5",
             "source": {
@@ -4703,6 +4739,7 @@
                 "psr",
                 "psr-7"
             ],
+            "abandoned": "laminas/laminas-diactoros",
             "time": "2018-09-05T19:29:37+00:00"
         }
     ],
