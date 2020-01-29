@@ -176,7 +176,7 @@ Route::group(['prefix' => 'council', 'middleware' => ['role:council|superuser|co
         Route::get('/', 'NotificationController@index')->name('notifications.index');
         Route::get('/create', 'NotificationController@create')->name('notifications.create');
         Route::post('/', 'NotificationController@store')->name('notifications.store');
-
+        Route::delete('/{id}', 'NotificationController@destroy')->name('notifications.destroy');
     });
     // Stats
     Route::group(['prefix' => 'stats'], function () {
