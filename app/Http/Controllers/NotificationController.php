@@ -51,15 +51,15 @@ class NotificationController extends Controller
           array(
             "fcm" => array(
               "notification" => array(
-                "name" => $request->name,
-                "description" => $request->description,
+                "title" => $request->name,
+                "body" => $request->description,
                 "category" => $request->category
               )
             ),
             "apns" => array("aps" => array(
               "alert" => array(
-                "name" => $request->name,
-                "description" => $request->description,
+                "title" => $request->name,
+                "body" => $request->description,
                 "category" => $request->category
               )
             ))
