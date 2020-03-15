@@ -92,6 +92,11 @@ Route::group(['prefix' => 'manage', 'middleware' => ['role:superuser', 'CheckBlo
         Route::get('/{uuid}/position', 'User\SuperuserController@updatePosition')->name('users.position');
         Route::post('/{uuid}/positions', 'User\SuperuserController@storePosition')->name('users.position.update');
 
+        // Show or Not Show User to Team Webpage
+        Route::put('/unshow/{uuid}', 'User\SuperuserController@unShowUser')->name('users.unshow');
+        Route::put('/showToTeam/{uuid}', 'User\SuperuserController@showUserToTeam')->name('users.showToTeam');
+
+
         Route::get('/{uuid}/permissions', 'User\SuperuserController@editPermissionUser')->name('users.permission.edit');
         Route::post('/{uuid}/permissions', 'User\SuperuserController@updatePermissionUser')->name('users.permission.update');
         Route::get('/{uuid}/role', 'User\SuperuserController@editRoleUser')->name('users.role.edit');

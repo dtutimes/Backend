@@ -36,6 +36,26 @@
                         <span class="btn__text">Update Position</span>
                     </a>
 
+                    @if($user->show)
+                        <a href="" class="btn btn--sm" onclick="event.preventDefault();
+                                                    document.getElementById('unshow-form').submit();">
+                            <span class="btn__text">Not Show</span>
+                        </a>
+
+                        <form id="unshow-form" action="{{route('users.unshow', $user->uuid)}}" method="post">
+                            @csrf @method('PUT')
+                        </form>
+                    @else
+                        <a href="" class="btn btn--sm" onclick="event.preventDefault();
+                                                    document.getElementById('show-form').submit();">
+                            <span class="btn__text">Show</span>
+                        </a>
+
+                        <form id="show-form" action="{{route('users.showToTeam', $user->uuid)}}" method="post">
+                            @csrf @method('PUT')
+                        </form>
+                    @endif
+
 
 
                     @if($user->blocked)
