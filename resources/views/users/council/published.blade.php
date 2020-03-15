@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 @section('content') @if ($stories->count())
 <section class="text-center">
     <div class="container">
@@ -45,8 +45,8 @@
                                     </span>
                                 </a>
                                 <a class="btn btn--sm type--uppercase"
-                                    href="{{ route('council.stories.published') }}" 
-                                    onclick="event.preventDefault(); 
+                                    href="{{ route('council.stories.published') }}"
+                                    onclick="event.preventDefault();
                                                 document.getElementById('delete-form--{{$item->id}}').submit(); "
                                     >
                                     <span class="btn__text">
