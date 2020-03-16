@@ -299,4 +299,30 @@ class SuperuserController extends Controller
       return redirect()->route('users.show', $user->uuid);
     }
 
+    public function unShowUser(Request $resquest, $uuid)
+    {
+        $user = User::whereUuid($uuid)->firstOrFail();
+
+        $user["show"] = 0;
+
+        $user->update();
+
+        session()->flash('success', 'User can not be seen to team webpage.');
+
+        return redirect()->back();
+    }
+
+    public function showUserToTeam(Request $resquest, $uuid)
+    {
+        $user = User::whereUuid($uuid)->firstOrFail();
+
+        $user["show"] = 1;
+
+        $user->update();
+
+        session()->flash('success', 'User can be seen to team webpage');
+
+        return redirect()->back();
+    }
+
 }
