@@ -28,8 +28,8 @@
                         <textarea name="description" placeholder="Description" class="validate-required" rows="4" required>{{ old('description') ? old('description') : "" }}</textarea>
                     </div>
                     <div class="col-md-12">
-                        <label>Link</label>
-                        <input type="text" name="link" placeholder="Link" class="validate-required" value="{{ old('link') ? old('link') : "" }}" required />
+                        <label>Link (optional)</label>
+                        <input type="text" name="link" placeholder="Link" value="{{ old('link') ? old('link') : "" }}" />
                     </div>
 
                     <div class="col-md-12">
