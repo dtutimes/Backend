@@ -39,6 +39,11 @@
                         <label for="">Cover</label>
                         <input type="file" name="cover" id="">
                     </div>
+
+                    <div class="col-md-12">
+                        <label >sID</label>
+                        <input type="number" name="sID" >
+                    </div>
                 
                     <div class="col-md-12">
                         <br>
