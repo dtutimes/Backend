@@ -53,14 +53,16 @@ class NotificationController extends Controller
               "notification" => array(
                 "title" => $request->name,
                 "body" => $request->description,
-                "category" => $request->category
+                "category" => $request->category,
+                "link" => $request->link
               )
             ),
             "apns" => array("aps" => array(
               "alert" => array(
                 "title" => $request->name,
                 "body" => $request->description,
-                "category" => $request->category
+                "category" => $request->category,
+                "link" => $request->link
               )
             ))
         ));
