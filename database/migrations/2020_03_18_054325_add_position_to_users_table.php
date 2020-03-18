@@ -14,14 +14,14 @@ class AddPositionToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('position', ['columnist', 'photographer', 'designer', 'illustrator', 'developer', 'alumni', 'council']);
+            $table->enum('position', ['columnist', 'photographer', 'designer', 'illustrator', 'developer', 'alumni', 'council' , 'society-head']);
         });
     }
 
     /**
      * Reverse the migrations.
      *
-
+     * @return void
      */
     public function down()
     {
