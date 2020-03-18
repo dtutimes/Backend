@@ -33,7 +33,9 @@
                                                 <img alt="Image" src="{{ auth()->user()->getFirstMediaUrl('avatars', 'thumb') }}">
                                             </a> --}}
                                             <span>
-                                                <strong>{{ $item->name }}</strong>
+                                                <a href="{{ $item->link }}"> 
+                                                    <strong>{{ $item->name }}</strong>
+                                                </a>
                                             </span>
                                         </div>
                                         <div class="card__meta">
@@ -46,11 +48,12 @@
                                                 {{ $item->description }}
                                             </h4>
                                         </a>
-                                        <a class="btn btn--sm" href="{{ route('stories.index' )}}" onclick="event.preventDefault();
-                                            document.getElementById('delete-form').submit();">
+
+                                        <a class="btn btn--sm" href="{{ route('notifications.index') }}" onclick="event.preventDefault();
+                                            document.getElementById('delete-form-{{$item->id}}').submit();">
                                             <span class="btn__text">Delete</span>
                                         </a>
-                                        <form id="delete-form" action="{{route('notifications.destroy', $item->id)}}" method="post">
+                                        <form id="delete-form-{{$item->id}}" action="{{ route('notifications.destroy', $item->id)}}" method="post">
                                             @csrf @method('DELETE')
                                         </form>
                                     </div>
