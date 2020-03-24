@@ -137,7 +137,7 @@ class CouncilController extends Controller
 
       $story['status'] = 'published';
 
-      $story['published_at'] = $updateTime;
+      $story['updated_at'] = $updateTime;
 
       $story->update(); 
 
