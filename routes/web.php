@@ -140,6 +140,7 @@ Route::group(['prefix' => 'council', 'middleware' => ['role:council|superuser|co
         Route::get('/pending', 'User\CouncilController@index')->name('council.stories.index');
         Route::get('/published', 'User\CouncilController@publishedIndex')->name('council.stories.published');
         Route::delete('/published/{uuid}', 'User\CouncilController@publishedDestroy')->name('council.stories.destory');
+        Route::put('/published/{uuid}/pending', 'User\CouncilController@pending')->name('council.stories.pending');
         Route::group(['prefix' => 'pending'], function() {
             Route::get('/{uuid}', 'User\CouncilController@show' )->name('council.stories.show');
             Route::put('/{uuid}/draft', 'User\CouncilController@draft')->name('council.stories.draft');

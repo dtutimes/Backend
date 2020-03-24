@@ -130,7 +130,7 @@
                 </p>
             </div>
         </div><br><br>
-        <a href="{{ env('APP_URL').'/login' }}" class="btn">Login</a>
+        <a href="{{ env('APP_URL') }}" class="btn">Login</a>
     </div><br><br>
 
     <footer id="" class="" style="background-color: black; text-align:center; padding: 1rem;">
