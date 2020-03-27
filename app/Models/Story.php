@@ -20,7 +20,7 @@ class Story extends Model implements HasMedia
         'title', 'biliner', 'slug',
         'body', 'status', 'cover',
         'views', 'likes', 
-        'meta_title', 'meta_description'
+        'meta_title', 'meta_description' , 'published_at'
     ];
 
     public function registerMediaConversions(Media $media = null)
