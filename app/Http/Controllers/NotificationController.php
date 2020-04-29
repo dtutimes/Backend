@@ -64,22 +64,27 @@ class NotificationController extends Controller
 //                 "title" => $request->name,
 //                 "body" => $request->description,
 //                 "category" => $request->category,
-//                 "link" => $request->link
+//             "link" => $request->link
 //               )
 //             ))
- //       ));
+//        ));
         $header = ['Authorization' => 'key=AAAAVkYNnL8:APA91bFan9iVArecnDiDSvN37JpwAoh_lg4F6DuzJbdZk9TN9SocIiIZOO-DfJI2O-4U-kmhjh5GWMXLpmmx_Fcpa4xD1l9gNQ4ElUX9x9lnJl3jSihNRIQ9V2Cc9PKmgLY9crovI9qp'];
         $body = [
-                "to"=> "/topics/all",
-                    "notification"=> [
-                      "title"=> "Check this Mobile (title)",
-                      "body"=> "Rich Notification testing (body)",
+                 "to"=> "/topics/all",
+                 "notification"=> [
+                      "title"=> $request->name,
+                      "body"=> $request->description ,
                       "mutable_content"=> true,
                       "sound"=> "Tri-tone"
-                      ]
-              ]
-        $request = new Request('POST', 'https://fcm.googleapis.com/fcm/send', $header, $body);
-        $response = $client->send($request);
+                      ],
+                "data"=>[
+                    "category" => $request->category,
+                    "link" => $request->link
+                    
+                    ]
+              ];
+        $requestO = new Request('POST', 'https://fcm.googleapis.com/fcm/send', $header, $body);
+        $response = $client->send($requestO);
 
         return redirect()->route('notifications.index');
     }
