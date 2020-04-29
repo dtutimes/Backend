@@ -133,13 +133,26 @@ class CouncilController extends Controller
     {
       $story = Story::whereUuid($uuid)->with('user')->firstOrFail();
 
-      $story->update([
-        'status' => 'published'
-      ]);      
+      $updateTime = new \DateTime();
+
+      $story['status'] = 'published';
+
+      if(!$story['published_at'])
+        $story['published_at'] = $updateTime;
+
+      $story->update(); 
 
       event(new StoryPublished($story));
 
       return redirect()->route('council.stories.show', $story->uuid);
+    }
+
+    public function pending(Request $request, $uuid)
+    { 
+        $story = Story::where('Uuid', $uuid)->firstOrFail()->update([
+            'status' => 'pending'
+        ]);
+        return redirect()->route('council.stories.published');
     }
 
     public function societyIndex()

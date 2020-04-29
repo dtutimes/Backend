@@ -35,6 +35,7 @@
                               <option value="developer">Developer</option>
                               <option value="council">Council</option>
                               <option value="alumni">Alumni</option>
+                              <option value="society-head">Society-Head</option>
                             </select>
                         </div>
 

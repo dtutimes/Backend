@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPositionToUsersTable extends Migration
+class AddPublishedToStoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class AddPositionToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('position', ['columnist', 'photographer', 'designer', 'illustrator', 'developer', 'alumni', 'council']);
+        Schema::table('stories', function (Blueprint $table) {
+            $table->dateTime('published_at')->nullable();
         });
+        \DB::statement('UPDATE stories SET published_at = updated_at WHERE status = "published"');
     }
 
     /**
      * Reverse the migrations.
      *
-
+     * @return void
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('stories', function (Blueprint $table) {
             //
         });
     }

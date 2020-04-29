@@ -39,9 +39,18 @@
                                     Created <strong>{{ $item->created_at->diffForHumans() }}</strong>
                                 </small>
                             <div class="text-right d-block">
-                                <a class="btn btn--sm type--uppercase" target="_blank" href="{{route('council.stories.show', $item->uuid)}}">
+                                <a class="btn btn--sm type--uppercase" href="{{route('council.stories.show', $item->uuid)}}">
                                     <span class="btn__text">
                                         Read Story
+                                    </span>
+                                </a>
+                                <a class="btn btn--sm type--uppercase"
+                                    href="{{ route('council.stories.pending', $item->uuid )}}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('pending-form--{{$item->id}}').submit(); "
+                                    >
+                                    <span class="btn__text">
+                                        Save back as Pending
                                     </span>
                                 </a>
                                 <a class="btn btn--sm type--uppercase"
@@ -53,6 +62,9 @@
                                         Delete
                                     </span>
                                 </a>
+                                <form id="pending-form--{{$item->id }}" action="{{ route('council.stories.pending', $item->uuid )}}" method="POST">
+                                    @csrf @method('PUT')
+                                </form>
                                 <form id="delete-form--{{$item->id }}" action="{{ route('council.stories.destory', $item->uuid )}}" method="POST">
                                     @csrf @method('DELETE')
                                 </form>
