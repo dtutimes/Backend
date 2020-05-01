@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Notification;
 use App\Events\NotificationEvent;
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Request as guzRequest;
 
 class NotificationController extends Controller
 {
@@ -83,8 +83,8 @@ class NotificationController extends Controller
                     
                     ]
               ];
-        $requestO = new Request('POST', 'https://fcm.googleapis.com/fcm/send', $header, $body);
-        $response = $client->send($requestO);
+        $requestG = new guzRequest('POST', 'https://fcm.googleapis.com/fcm/send', $header, $body);
+        $response = $client->send($requestG);
 
         return redirect()->route('notifications.index');
     }
