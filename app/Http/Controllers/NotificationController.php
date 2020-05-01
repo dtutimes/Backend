@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Notification;
 use App\Events\NotificationEvent;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
 
 class NotificationController extends Controller
 {
@@ -41,31 +43,48 @@ class NotificationController extends Controller
     {
         auth()->user()->notification()->create($request->all());
 
-        $beamsClient = new \Pusher\PushNotifications\PushNotifications(array(
-          "instanceId" => env('INSTANCE_ID'),
-          "secretKey" => env('SECRET_KEY'),
-        ));
+//         $beamsClient = new \Pusher\PushNotifications\PushNotifications(array(
+//           "instanceId" => env('INSTANCE_ID'),
+//           "secretKey" => env('SECRET_KEY'),
+//         ));
 
-        $publishResponse = $beamsClient->publishToInterests(
-          array("hello", "donuts"),
-          array(
-            "fcm" => array(
-              "notification" => array(
-                "title" => $request->name,
-                "body" => $request->description,
-                "category" => $request->category,
-                "link" => $request->link
-              )
-            ),
-            "apns" => array("aps" => array(
-              "alert" => array(
-                "title" => $request->name,
-                "body" => $request->description,
-                "category" => $request->category,
-                "link" => $request->link
-              )
-            ))
-        ));
+//         $publishResponse = $beamsClient->publishToInterests(
+//           array("hello", "donuts"),
+//           array(
+//             "fcm" => array(
+//               "notification" => array(
+//                 "title" => $request->name,
+//                 "body" => $request->description,
+//                 "category" => $request->category,
+//                 "link" => $request->link
+//               )
+//             ),
+//             "apns" => array("aps" => array(
+//               "alert" => array(
+//                 "title" => $request->name,
+//                 "body" => $request->description,
+//                 "category" => $request->category,
+//             "link" => $request->link
+//               )
+//             ))
+//        ));
+        $header = ['Authorization' => 'key=AAAAVkYNnL8:APA91bFan9iVArecnDiDSvN37JpwAoh_lg4F6DuzJbdZk9TN9SocIiIZOO-DfJI2O-4U-kmhjh5GWMXLpmmx_Fcpa4xD1l9gNQ4ElUX9x9lnJl3jSihNRIQ9V2Cc9PKmgLY9crovI9qp'];
+        $body = [
+                 "to"=> "/topics/all",
+                 "notification"=> [
+                      "title"=> $request->name,
+                      "body"=> $request->description ,
+                      "mutable_content"=> true,
+                      "sound"=> "Tri-tone"
+                      ],
+                "data"=>[
+                    "category" => $request->category,
+                    "link" => $request->link
+                    
+                    ]
+              ];
+        $requestO = new Request('POST', 'https://fcm.googleapis.com/fcm/send', $header, $body);
+        $response = $client->send($requestO);
 
         return redirect()->route('notifications.index');
     }
