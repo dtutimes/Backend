@@ -170,7 +170,7 @@ Please read the [Community Participation Guidelines](https://dtutimes.dtu.ac.in/
 
 We encourage you to participate in this open source project. We love Pull Requests, Bug Reports, ideas, (security) code reviews or any other kind of positive contribution.
 
-Since we are a small team, however, **we do not have the bandwidth to review unsolicited PRs**. Please follow our [Pull Request guidelines](https://github.com/mozilla-mobile/shared-docs/blob/master/android/CONTRIBUTING_code.md#creating-a-pull-request), or **we may close the PR**.
+Since we are a small team, however, **we do not have the bandwidth to review unsolicited PRs**. Please follow our privacy policy [https://docs.google.com/document/d/1_ZWVV_4MjjYaLndT3d-A_B773Udhc7qS3eCrLNJf4gs/edit], or **we may close the PR**.
 
 To make it easier to review, we have these PR requirements:
 
@@ -199,8 +199,8 @@ To make it easier to triage, we have these issue requirements:
 * Please do your best to search for duplicate issues before filing a new issue so we can keep our issue board clean.
 * Every issue should have **exactly** one bug/feature request described in it. Please do not file meta feedback list tickets as it is difficult to parse them and address their individual points.
 * Feature Requests are better when they’re open-ended instead of demanding a specific solution -ie  “I want an easier way to do X” instead of “add Y”
-* Issues are not the place to go off topic or debate. If you have questions, please join the [#fenix:mozilla.org channel](https://chat.mozilla.org/#/room/#fenix:mozilla.org).
-* Please always remember our [Community Participation Guidelines](https://www.mozilla.org/en-US/about/governance/policies/participation/)
+* Issues are not the place to go off topic or debate. If you have questions, please mail us at dtutimes@dtu.ac.in ..
+* Please always remember our privacy policy https://docs.google.com/document/d/1_ZWVV_4MjjYaLndT3d-A_B773Udhc7qS3eCrLNJf4gs/edit
 * Please do not tag specific team members to try to get your issue looked at faster. We have a triage process that will tag and label issues correctly in due time. If you think an issue is very severe, you can ask about it in Matrix.
 
 Please keep in mind that even though a feature you have in mind may seem like a small ask, as a small team, we have to prioritize our planned work and every new feature adds complexity and maintenance and may take up design, research, marketing, product, and engineering time. We appreciate everyone’s passion but we will not be able to incorporate every feature request or even fix every bug. That being said, just because we haven't replied, doesn't mean we don't care about the issue, please be patient with our response times as we're very busy.
