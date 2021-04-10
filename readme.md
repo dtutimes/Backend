@@ -153,9 +153,9 @@
 
 ## Getting Involved
 
-Please read the [Community Participation Guidelines](https://dtutimes.dtu.ac.in/) before filing an issue. This is our professional working environment and we want to keep our workspace clean and healthy.
+Please read the [Community Participation Guidelines](https://github.com/ikaul29/Backend/blob/master/CONTRIBUTING.md/) before filing an issue. This is our professional working environment and we want to keep our workspace clean and healthy.
 
-* [Guide to Contributing](https://github.com/dtutimes/Backend/blob/master/android/CONTRIBUTING.md) (**New contributors start here!**)
+* [Guide to Contributing](https://github.com/ikaul29/Backend/blob/master/CONTRIBUTING.md) (**New contributors start here!**)
 
 * Browse our [current Issues](https://github.com/dtutimes/Backend/issues), or [file a security issue][sec issue].
 
