@@ -170,7 +170,7 @@ Please read the [Community Participation Guidelines](https://dtutimes.dtu.ac.in/
 
 We encourage you to participate in this open source project. We love Pull Requests, Bug Reports, ideas, (security) code reviews or any other kind of positive contribution.
 
-Since we are a small team, however, **we do not have the bandwidth to review unsolicited PRs**. Please follow our [privacy policy](https://docs.google.com/document/d/1_ZWVV_4MjjYaLndT3d-A_B773Udhc7qS3eCrLNJf4gs/edit), or **we may close the PR**.
+**We do not have the bandwidth to review unsolicited PRs**. Please follow our [privacy policy](https://docs.google.com/document/d/1_ZWVV_4MjjYaLndT3d-A_B773Udhc7qS3eCrLNJf4gs/edit), or **we may close the PR**.
 
 To make it easier to review, we have these PR requirements:
 
@@ -181,13 +181,10 @@ To make it easier to review, we have these PR requirements:
 * Use micro-commits. This makes it easier and faster to review.
 * Add a screenshot for UX changes (this is part of the PR checklist)
 
-As a small team, we have to prioritize our work, and reviewing PRs takes time. We receive lots of PRs every day, so if you can keep your PRs small, it helps our small team review and merge code faster, minimizing stale code.
+As You can keep your PRs small, it helps our team review and merge code faster, minimizing stale code.
 
 
-Keep in mind that the team is very overloaded, so PRs sometimes wait
-for a *very* long time. However this is not for lack of interest, but
-because we find ourselves in a constant need to prioritize
-certain issues/PRs over others. If you think your issue/PR is very important,
+PRs may take time to merge depending on the issue you are addressing. If you think your issue/PR is very important,
 try to popularize it by getting other users to comment and share their point of view.
 
 ## I want to file an issue!
