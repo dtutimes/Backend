@@ -86,6 +86,8 @@
         MAIL_DRIVER=log
         ```
 
+
+<!-- 
 # Backend
 
 ## WEB Routes
@@ -149,7 +151,7 @@
     - #### Images
 
     - #### News
-
+-->
 
 ## Getting Involved
 
