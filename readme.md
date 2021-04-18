@@ -86,6 +86,8 @@
         MAIL_DRIVER=log
         ```
 
+
+<!-- 
 # Backend
 
 ## WEB Routes
@@ -149,22 +151,26 @@
     - #### Images
 
     - #### News
-
+-->
 
 ## Getting Involved
 
-Please read the [Community Participation Guidelines](https://github.com/ikaul29/Backend/blob/master/CONTRIBUTING.md/) before filing an issue. This is our professional working environment and we want to keep our workspace clean and healthy.
+Please read the [Code of Conduct](https://github.com/ikaul29/Backend/blob/master/code_of_conduct.md) before filing an issue. This is our professional working environment and we want to keep our workspace clean and healthy.
 
-* [Guide to Contributing](https://github.com/ikaul29/Backend/blob/master/CONTRIBUTING.md) (**New contributors start here!**)
-
+* Fork the Project
+* Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+* Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+* Push to the Branch (`git push origin feature/AmazingFeature`)
+* Open a Pull Request
 * Browse our [current Issues](https://github.com/dtutimes/Backend/issues), or [file a security issue][sec issue].
-
 * Discord: [#discord:DtuTimes](https://discord.com/)
-
 * Check out the [project wiki](https://github.com/dtutimes/Backend) for more information.
 
 **Beginners!** - Watch out for [Issues with the "Good First Issue" label](https://github.com/dtutimes/Backend/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22). These are easy bugs that have been left for first timers to have a go, get involved and make a positive contribution to the project!
 
+## Code of Conduct
+
+This project and everyone participating in it is governed by the [DTU Times Code of Conduct](code_of_conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [dtutimes@dtu.ac.in](mailto:dtutimes@dtu.ac.in).
 
 ## I want to open a Pull Request!
 
@@ -186,6 +192,12 @@ As You can keep your PRs small, it helps our team review and merge code faster, 
 
 PRs may take time to merge depending on the issue you are addressing. If you think your issue/PR is very important,
 try to popularize it by getting other users to comment and share their point of view.
+
+
+## LICENCE
+
+Distributed under the MIT License. See [LICENCE](https://github.com/ikaul29/Backend/blob/master/LICENSE.md) for more information.
+
 
 ## I want to file an issue!
 
