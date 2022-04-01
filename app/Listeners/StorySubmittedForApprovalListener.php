@@ -31,8 +31,9 @@ class StorySubmittedForApprovalListener implements ShouldQueue
     public function handle(StorySubmittedForApproval $event)
     {
         $story = Story::whereUuid($event->uuid)->firstOrFail();
-        $council = Role::where('name', 'council')->with('users')->first();
-        $users = $council->users;
+        // $council = Role::where('name', 'council')->with('users')->first();
+        // $users = $council->users;
+        $users = User::where('position', 'council')->where('show', true)->get();
         foreach ($users as $user) {
             \Mail::to($user->email)->send(new StorySubmittedForApprovalMail($story));
         }
