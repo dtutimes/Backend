@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Mail\StorySubmittedForApprovalMail;
 use App\Models\{Story};
 use App\Role;
+use App\User;
 
 
 class StorySubmittedForApprovalListener implements ShouldQueue
