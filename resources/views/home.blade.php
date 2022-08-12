@@ -189,9 +189,9 @@ $draftUser = auth()->user()->story()->whereStatus('draft')->count();
             'data' => array_map(function ($x) use ($total) {
                 return $total[$x];
             }, $arrX),
-            borderColor =>'rgba(255,99,132,1)',
-            borderWidth => 1,
-            fill => 'flase',
+            'borderColor' =>'rgba(255,99,132,1)',
+            'borderWidth' => 1,
+            'fill' => 'flase',
         ];
     }
     if(!is_null($draft)) {
@@ -200,9 +200,9 @@ $draftUser = auth()->user()->story()->whereStatus('draft')->count();
             'data' => array_map(function ($x) use ($draft) {
                 return $draft[$x];
             }, $arrX),
-            borderColor =>'rgba(255, 206, 86, 1)',
-            borderWidth => 1,
-            fill => 'flase',
+            'borderColor' =>'rgba(255, 206, 86, 1)',
+            'borderWidth' => 1,
+            'fill' => 'flase',
         ];
     }
     if(!is_null($pending)) {
@@ -211,9 +211,9 @@ $draftUser = auth()->user()->story()->whereStatus('draft')->count();
             'data' => array_map(function ($x) use ($pending) {
                 return $pending[$x];
             }, $arrX),
-            borderColor =>'rgba(54, 162, 235, 1)',
-            borderWidth => 1,
-            fill => 'flase',
+            'borderColor' =>'rgba(54, 162, 235, 1)',
+            'borderWidth' => 1,
+            'fill' => 'flase',
         ];
     }
     if(!is_null($published)) {
@@ -222,9 +222,9 @@ $draftUser = auth()->user()->story()->whereStatus('draft')->count();
             'data' => array_map(function ($x) use ($published) {
                 return $published[$x];
             }, $arrX),
-            borderColor =>'rgba(54, 162, 235, 1)',
-            borderWidth => 1,
-            fill => 'flase',
+            'borderColor' =>'rgba(54, 162, 235, 1)',
+            'borderWidth' => 1,
+            'fill' => 'flase',
         ];
     }
     @endphp
