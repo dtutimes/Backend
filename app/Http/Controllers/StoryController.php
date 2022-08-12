@@ -118,7 +118,9 @@ class StoryController extends Controller
             'biliner'           => $request->biliner,
             'slug'              => str_slug($request->title, "-").'-'.rand(100, 999),
             'cover'             => $request->cover,
-            'status'            => $request->status
+            'status'            => $request->status,
+            'created_at'        => \Carbon\Carbon::parse($request->created_at)->toDateTimeString(),
+            'updated_at'        => \Carbon\Carbon::parse($request->created_at)->toDateTimeString(),
         ];
 
         $story = auth()->user()->story()->where('uuid' , $uuid)->firstOrFail();

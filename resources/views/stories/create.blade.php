@@ -45,6 +45,11 @@
                     </div>
 
                     <div class="col-md-12">
+                        <label for="created_at">Created at?</label>
+                        <input required type="datetime-local" id="created_at" name="created_at" value="{{ $story ? $story->created_at->toDateTimeLocalString() : now()->toDateTimeLocalString() }}">
+                    </div>
+
+                    <div class="col-md-12">
                         <label>Blog image</label>
                         <input id="cover" type="file" class="validate-required" name="blog_image" value="{{ old('blog_image') ? old('blog_image') : ''}}">
                     </div>

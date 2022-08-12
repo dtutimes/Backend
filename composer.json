@@ -21,8 +21,7 @@
         "pusher/pusher-push-notifications": "^1.1",
         "santigarcor/laratrust": "5.0.*",
         "spatie/laravel-analytics": "^3.6",
-        "spatie/laravel-medialibrary": "^7.0.0",
-        "guzzlehttp/guzzle": "~6.0"
+        "spatie/laravel-medialibrary": "^7.0.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
