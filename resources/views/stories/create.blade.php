@@ -46,7 +46,7 @@
 
                     <div class="col-md-12">
                         <label for="created_at">Created at?</label>
-                        <input required type="datetime-local" id="created_at" name="created_at" value="{{ $story ? $story->created_at->toDateTimeLocalString() : now()->toDateTimeLocalString() }}">
+                        <input required type="datetime-local" id="created_at" name="created_at" value="{{ $story ? $story->created_at->format('Y-m-d\TH:i:s') : now()->format('Y-m-d\TH:i:s') }}">
                     </div>
 
                     <div class="col-md-12">
