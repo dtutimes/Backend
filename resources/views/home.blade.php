@@ -185,7 +185,7 @@ $draftUser = auth()->user()->story()->whereStatus('draft')->count();
     if(!is_null($total)) {
         $datasets[] = [
             'label' => 'Total',
-            'data' => array_walk(function ($x) {
+            'data' => array_walk(function ($x) use ($total) {
                 return $total[$x];
             }, range(1, 12)),
             borderColor =>'rgba(255,99,132,1)',
@@ -196,7 +196,7 @@ $draftUser = auth()->user()->story()->whereStatus('draft')->count();
     if(!is_null($draft)) {
         $datasets[] = [
             'label' => 'Draft',
-            'data' => array_walk(function ($x) {
+            'data' => array_walk(function ($x) use ($draft) {
                 return $draft[$x];
             }, range(1, 12)),
             borderColor =>'rgba(255, 206, 86, 1)',
@@ -207,7 +207,7 @@ $draftUser = auth()->user()->story()->whereStatus('draft')->count();
     if(!is_null($pending)) {
         $datasets[] = [
             'label' => 'Pending',
-            'data' => array_walk(function ($x) {
+            'data' => array_walk(function ($x) use ($pending) {
                 return $pending[$x];
             }, range(1, 12)),
             borderColor =>'rgba(54, 162, 235, 1)',
@@ -218,7 +218,7 @@ $draftUser = auth()->user()->story()->whereStatus('draft')->count();
     if(!is_null($published)) {
         $datasets[] = [
             'label' => 'Published',
-            'data' => array_walk(function ($x) {
+            'data' => array_walk(function ($x) use ($published) {
                 return $published[$x];
             }, range(1, 12)),
             borderColor =>'rgba(54, 162, 235, 1)',
