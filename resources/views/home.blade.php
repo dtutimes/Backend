@@ -146,10 +146,10 @@
 @endsection
 
 @php
-$totalUser = auth()->user()->story()->get()->count();
-$pendingUser = auth()->user()->story()->whereStatus('pending')->get()->count();
-$publishedUser = auth()->user()->story()->whereStatus('published')->get()->count();
-$draftUser = auth()->user()->story()->whereStatus('draft')->get()->count();
+$totalUser = auth()->user()->story()->count();
+$pendingUser = auth()->user()->story()->whereStatus('pending')->count();
+$publishedUser = auth()->user()->story()->whereStatus('published')->count();
+$draftUser = auth()->user()->story()->whereStatus('draft')->count();
 @endphp
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
