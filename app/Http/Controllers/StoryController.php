@@ -119,16 +119,12 @@ class StoryController extends Controller
             'slug'              => str_slug($request->title, "-").'-'.rand(100, 999),
             'cover'             => $request->cover,
             'status'            => $request->status,
-            'created_at'        => \Carbon\Carbon::parse($request->created_at)->toDateTimeString(),
-            'updated_at'        => \Carbon\Carbon::parse($request->created_at)->toDateTimeString(),
+            'published_at'        => \Carbon\Carbon::parse($request->created_at)->toDateTimeString(),
         ];
 
         $story = auth()->user()->story()->where('uuid' , $uuid)->firstOrFail();
         
-        $story->fill($data);
-        $story->save(['timestamps' => false]);
-        
-        // $story->update($data);
+        $story->update($data);
 
         if (isset($request['blog_image'])) {
             $story->clearMediaCollection('blog_images');
