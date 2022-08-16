@@ -125,7 +125,10 @@ class StoryController extends Controller
 
         $story = auth()->user()->story()->where('uuid' , $uuid)->firstOrFail();
         
-        $story->update($data);
+        $story->fill($data);
+        $story->save(['timestamps' => false]);
+        
+        // $story->update($data);
 
         if (isset($request['blog_image'])) {
             $story->clearMediaCollection('blog_images');
