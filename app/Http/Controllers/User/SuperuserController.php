@@ -140,7 +140,7 @@ class SuperuserController extends Controller
 
     public function createMultipleUsers(StoreUser $request)
     {
-       $file = $request->file(key: 'file');
+       $file = $request->file('file');
        $csvData = file_get_contents($file);
        $rows = array_map('str_getcsv', explode("\n", $csvData));
        $header = array_shift($rows);
