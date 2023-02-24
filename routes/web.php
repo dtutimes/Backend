@@ -88,6 +88,8 @@ Route::group(['prefix' => 'manage', 'middleware' => ['role:superuser', 'CheckBlo
         // Users CRUD
         Route::get('/create', 'User\SuperuserController@createUser')->name('users.create');
         Route::post('/', 'User\SuperuserController@storeUser')->name('users.store');
+        Route::get('/createMultipleUsers', 'User\SuperuserController@importMultipleUsers')->name('users.import-multipleUsers');
+        Route::post('/createMultipleUsers', 'User\SuperuserController@createMultipleUsers')->name('users.create-multipleUsers');
         Route::get('/{uuid}', 'User\SuperuserController@showUser')->name('users.show');
         Route::get('/{uuid}/position', 'User\SuperuserController@updatePosition')->name('users.position');
         Route::post('/{uuid}/positions', 'User\SuperuserController@storePosition')->name('users.position.update');

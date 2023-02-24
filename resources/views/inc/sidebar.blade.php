@@ -291,6 +291,11 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="{{ route('users.createMultipleUsers') }}" class="text-white">
+                                        Create New Multiple Members
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="{{ route('users.blocked') }}" class="text-white">
                                         Blocked Members
                                     </a>

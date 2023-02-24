@@ -133,6 +133,37 @@ class SuperuserController extends Controller
         ]);
     }
 
+    public function importMultipleUsers()
+    {
+        return view('users.import-multipleUsers');
+    }
+
+    public function createMultipleUsers(StoreUser $request)
+    {
+       $file = $request->file(key: 'file');
+       $csvData = file_get_contents($file);
+       $rows = array_map('str_getcsv', explode("\n", $csvData));
+       $header = array_shift($rows);
+
+       foreach ($rows as $row){
+            $row = array_combine($header, $row);
+            $password = rand();
+            $user = User::create([
+                'name'      => $row['name'],
+                'email'     => $row['email'],
+                'password'  => bcrypt($password)
+            ]);
+            $role = Role::where('name', 'columnist')->firstOrFail();
+            if($user) $user->attachRole($role);
+
+            event( new UserHasRegistered($user, $password));
+       }
+
+       session()->flash('success', 'Users Created!, and mails has been sent.' );
+
+       return redirect()->route('users.index');
+    }
+
     /**
      * Store a newly created resource in DB
      *
