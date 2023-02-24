@@ -291,7 +291,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('users.createMultipleUsers') }}" class="text-white">
+                                    <a href="{{ route('users.import-multipleUsers') }}" class="text-white">
                                         Create New Multiple Members
                                     </a>
                                 </li>
