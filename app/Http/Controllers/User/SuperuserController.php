@@ -142,26 +142,27 @@ class SuperuserController extends Controller
     {
        $file = $request->file('file');
        $csvData = file_get_contents($file);
-       $rows = array_map('str_getcsv', explode("\n", $csvData));
-       $header = array_shift($rows);
+       dd($csvData);
+    //    $rows = array_map('str_getcsv', explode("\n", $csvData));
+    //    $header = array_shift($rows);
 
-       foreach ($rows as $row){
-            $row = array_combine($header, $row);
-            $password = rand();
-            $user = User::create([
-                'name'      => $row['name'],
-                'email'     => $row['email'],
-                'password'  => bcrypt($password)
-            ]);
-            $role = Role::where('name', 'columnist')->firstOrFail();
-            if($user) $user->attachRole($role);
+    //    foreach ($rows as $row){
+    //         $row = array_combine($header, $row);
+    //         $password = rand();
+    //         $user = User::create([
+    //             'name'      => $row['name'],
+    //             'email'     => $row['email'],
+    //             'password'  => bcrypt($password)
+    //         ]);
+    //         $role = Role::where('name', 'columnist')->firstOrFail();
+    //         if($user) $user->attachRole($role);
 
-            event( new UserHasRegistered($user, $password));
-       }
+    //         event( new UserHasRegistered($user, $password));
+    //    }
 
-       session()->flash('success', 'Users Created!, and mails has been sent.' );
+    //    session()->flash('success', 'Users Created!, and mails has been sent.' );
 
-       return redirect()->route('users.index');
+    //    return redirect()->route('users.index');
     }
 
     /**
