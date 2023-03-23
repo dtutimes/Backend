@@ -152,6 +152,7 @@ class SuperuserController extends Controller
             $user = User::create([
                 'name'      => $row['name'],
                 'email'     => $row['email'],
+                'position' => $row['position'],
                 'password'  => bcrypt($password)
             ]);
             $role = Role::where('name', 'columnist')->firstOrFail();
