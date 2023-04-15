@@ -157,7 +157,8 @@ class SuperuserController extends Controller
             ]);
             $role = Role::where('name', 'columnist')->firstOrFail();
             if($user) $user->attachRole($role);
-
+            $user->position = $row['position'];
+            $user->save();
             event( new UserHasRegistered($user, $password));
        }
 
